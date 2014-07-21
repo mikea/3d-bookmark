@@ -5,12 +5,14 @@ Series of bookmarks
 
 Lissajous figures
 -----------------
+http://www.thingiverse.com/thing:401268
 
 ![Preview](http://thingiverse-production.s3.amazonaws.com/renders/20/d5/6a/af/97/lissajous_bookmark_preview_featured.jpg)
 
 
 Laser Path In 2D Mirrored Box
 ------------------------------
+http://www.thingiverse.com/thing:401276
 
 ![Preview](http://thingiverse-production.s3.amazonaws.com/renders/19/13/95/e6/83/laser_bookmark_preview_featured.jpg)
 
