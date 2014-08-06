@@ -10,7 +10,11 @@ import scala.math.Pi
 
 
 object LissajousBookmark {
+  val DEBUG = true
+
   import OpenSCAD._
+
+  case class Quality(fs: Double, step: Double)
 
   // physical size
   val width = 150.0
@@ -19,19 +23,33 @@ object LissajousBookmark {
 
   // Lissajous params
   val tMax: Double = Pi * 2
-  val a = 4.0
+  val a = 7.0
   val b = 15.0
-  val phi = Pi / 4
+  val phi = Pi / 3
 
-  // Evaluation params
-  val fs = 0.1
-  val step = .01
+  // Quality params
+  val debugQuality = Quality(1, 0.01)
+  val finalQuality = Quality(0.1, 0.01)
+
+  val QUALITY = if (DEBUG) debugQuality else finalQuality
+
+  val step = QUALITY.step
 
   def scene : SObject = {
     val result = new mutable.ArrayBuffer[SObject]()
 
-//    result += stmt("$fs = " + fs + ";")
+    // todo: should be part of the lib
+//    result += stmt("$fs = " + QUALITY.fs + ";")
 
+    result += Builders.extrude(
+      t => Vec3(
+        width / 2 * math.sin(a * t * tMax),
+        height / 2 * math.sin(b * t * tMax + phi),
+        0),
+      arcStep = 2,
+      r = d / 2)
+
+/*
     var p : Vec3 = null
     for (i <- 0 to math.ceil(tMax / step).toInt) {
       val t = i * step
@@ -45,6 +63,7 @@ object LissajousBookmark {
 
       p = p1
     }
+*/
 
 
     seq(result : _*)

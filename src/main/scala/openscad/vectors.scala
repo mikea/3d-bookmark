@@ -9,6 +9,8 @@ trait Vec[Self] {
 }
 
 case class Vec3(x : Double, y : Double, z : Double) extends Vec[Vec3] {
+  def tr = x + y + z
+
   def toDegrees = Vec3(math.toDegrees(x), math.toDegrees(y), math.toDegrees(z))
 
   def normalized() = {
@@ -28,6 +30,13 @@ case class Vec3(x : Double, y : Double, z : Double) extends Vec[Vec3] {
   def -(other: Vec3) = Vec3(x - other.x, y - other.y, z - other.z)
   def +(other: Vec3) = Vec3(x + other.x, y + other.y, z + other.z)
   def *(t: Double): Vec3 = Vec3(x * t, y * t, z * t)
+
+  def cross(other: Vec3) = Vec3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x)
+  def dot(other: Vec3) = x * other.x + y * other.y + z * other.z
+
+  def collinear(other: Vec3) = (this cross other).tr == 0
+
+  def perpendicular(other: Vec3) = (this dot other) == 0
 
   override def toString = s"[$x, $y, $z]"
 }

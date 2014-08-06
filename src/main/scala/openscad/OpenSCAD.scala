@@ -37,6 +37,7 @@ object OpenSCAD {
   def sphereAt(center : Vec3, r : Double) : SObject = translate(center, sphere(r))
 
   def translate(p : Vec3, child: SObject) : SObject = Wrap(s"translate($p) {\n", child, "\n}\n")
+  def translate(p : Vec3, children: SObject*) : SObject = Wrap(s"translate($p) {\n", union(children : _*), "\n}\n")
 
   def rotate(p : Vec3, child: SObject) : SObject = Wrap(s"rotate(${p.toDegrees}) {\n", child, "\n}\n")
 
