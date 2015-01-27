@@ -15,13 +15,13 @@ object LissajousBookmark {
   // physical size
   val width = 150.0
   val height = 20.0
-  val d = 1.5
+  val d = .9
 
   // Lissajous params
   val tMax: Double = Pi * 2
-  val a = 4.0
-  val b = 15.0
-  val phi = Pi / 4
+  val a = 2.65
+  val b = 14.6
+  val phi = 1.00531
 
   // Evaluation params
   val fs = 0.1
@@ -40,7 +40,7 @@ object LissajousBookmark {
       result += comment(s"t=$t p1=$p1")
 
       if (p != null) {
-        result += Builders.beam(p, p1, d)
+        result += Builders.beam(p, p1, d = d)
       }
 
       p = p1

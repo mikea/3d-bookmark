@@ -31,7 +31,7 @@ object OpenSCAD {
   }
 
   def cube(size : Vec3, center : Boolean = false) : SObject = Text(s"cube(size=$size, center=$center);")
-  def cylinder(h : Double, r : Double, center : Boolean = false) : SObject = Text(s"cylinder(h=$h, r=$r, center=$center);")
+  def cylinder(h : Double, r : Double, r1 : Double = -1, center : Boolean = false) : SObject = Text(s"cylinder(h=$h, r=$r, r1=${if (r1 != -1) r1 else r}, center=$center);")
 
   def sphere(r : Double) : SObject = Text(s"sphere(r=$r);")
   def sphereAt(center : Vec3, r : Double) : SObject = translate(center, sphere(r))
